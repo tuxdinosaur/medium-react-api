@@ -13,7 +13,9 @@ function PostCard (props) {
       <PostCardBody
         title={props.title}
         text={props.text}
+        date={props.date}
         readTime={props.readTime}
+        author={props.author}
       >
         {props.children}
       </PostCardBody>

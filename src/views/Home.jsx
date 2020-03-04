@@ -28,10 +28,12 @@ class Home extends Component {
       const payload = await response.json()
 
       const posts = payload.data.posts.map((badPost) => ({
-        image: badPost.imageUrl,
+        image: badPost.image,
         title: badPost.title,
         text: badPost.description,
-        readTime: badPost.readingTime
+        date: badPost.date,
+        readTime: badPost.time,
+        author: badPost.author
       }))
 
       this.setState({
@@ -42,7 +44,7 @@ class Home extends Component {
   }
 
   render () {
-    if (this.state.loading) return <AppLoading />
+    //if (this.state.loading) return <AppLoading />
 
     return <PostList list={this.state.posts} />
   }

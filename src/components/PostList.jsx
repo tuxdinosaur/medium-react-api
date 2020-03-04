@@ -16,7 +16,9 @@ function PostList (props) {
               title={post.title}
               img={post.image}
               text={post.text}
+              date={post.date}
               readTime={post.readTime}
+              author={post.author}
             >
               <PostCardButtons
                 edit={post.edit}

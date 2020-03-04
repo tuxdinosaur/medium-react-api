@@ -17,7 +17,8 @@ class Post extends Component {
         author: post.author,
         imageUrl: post.image,
         readingTime: post.readTime,
-        description: post.description
+        description: post.description,
+        date: post.date
       })
     })
 
