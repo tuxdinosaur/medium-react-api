@@ -3,6 +3,8 @@ import React, { Component } from 'react'
 import AppLoading from '../components/AppLoading'
 import PostList from '../components/PostList'
 
+import api from '../lib/api'
+
 class Home extends Component {
   constructor (props) {
     super(props)
@@ -13,34 +15,17 @@ class Home extends Component {
     }
   }
 
-  componentDidMount () {
-    setInterval(async () => {
+  async componentDidMount () {
       this.setState({
         loading: true
       })
 
-      const token = window.sessionStorage.getItem('authorization')
-
-      const response = await window.fetch('http://localhost:8080/posts', {
-        headers: { authorization: token }
-      })
-
-      const payload = await response.json()
-
-      const posts = payload.data.posts.map((badPost) => ({
-        image: badPost.image,
-        title: badPost.title,
-        text: badPost.description,
-        date: badPost.date,
-        readTime: badPost.time,
-        author: badPost.author
-      }))
+      const payload = await api.getPosts()
 
       this.setState({
-        posts,
+        posts: payload.data.posts,
         loading: false
       })
-    }, 2000)
   }
 
   render () {

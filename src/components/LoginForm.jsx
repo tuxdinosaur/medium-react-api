@@ -37,10 +37,10 @@ class LoginForm extends Component {
 
         <AppInput
           id='email'
-          label='Email'
+          label='Correo electrónico'
           type='text'
           ariaDescribedBy='user email'
-          placeholder='fulanito@detal.com'
+          placeholder='email@correo.com'
           value={this.state.email}
           onChange={this.onChange.bind(this)}
         />
@@ -50,7 +50,7 @@ class LoginForm extends Component {
           label='Contraseña'
           type='password'
           ariaDescribedBy='user password'
-          placeholder='Contraseña123'
+          placeholder='Contraseña'
           value={this.state.password}
           onChange={this.onChange.bind(this)}
         />

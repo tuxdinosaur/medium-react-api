@@ -6,7 +6,7 @@ function NavbarBrand () {
       className='navbar-brand'
       href='/to-landing-page'
     >
-      Navbar
+      kodeblog
     </a>
   )
 }

@@ -1,4 +1,9 @@
-.app .container {
+#loginScreen {
+  background: #363636;
+  color: #fff;
+}
+
+#content {
   padding-top: 2rem;
 }
 

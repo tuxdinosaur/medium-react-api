@@ -2,29 +2,14 @@ import React, { Component } from 'react'
 
 import PostForm from '../components/PostForm'
 
+import api from '../lib/api'
+
 class Post extends Component {
   async onSubmit (post) {
-    const token = window.sessionStorage.getItem('authorization')
 
-    const response = await window.fetch('http://localhost:8080/posts', {
-      method: 'POST',
-      headers: {
-        'Content-Type': 'application/json',
-        authorization: token
-      },
-      body: JSON.stringify({
-        title: post.title,
-        author: post.author,
-        imageUrl: post.image,
-        readingTime: post.readTime,
-        description: post.description,
-        date: post.date
-      })
-    })
+    const payload = await api.createPost(post)
 
-    const payload = await response.json()
-
-    window.alert(payload.data.posts._id)
+    window.alert(payload.data.post._id)
   }
 
   render () {

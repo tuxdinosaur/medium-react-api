@@ -1,11 +1,23 @@
 import React, { Component } from 'react'
 
+import {
+  BrowserRouter,
+  Switch,
+  Route,
+  withRouter
+} from 'react-router-dom'
+
 import Navbar from './components/Navbar'
 
 import Home from './views/Home'
 import Post from './views/Post'
+import Login from './views/Login'
 
 import LoginForm from './components/LoginForm'
+
+import api from './lib/api'
+
+import ValidateSession from './components/ValidateSession'
 
 class App extends Component {
   constructor (props) {
@@ -17,59 +29,54 @@ class App extends Component {
   }
 
   async onLogin (auth) {
-    try {
-      const response = await window.fetch('http://localhost:8080/users/login', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({
-          email: auth.email,
-          password: auth.password
-        })
-      })
+    const payload = await api.login(auth.email, auth.password)
 
-      const payload = await response.json()
-
-      this.setState({ authorization: payload.data.token })
-
-      window.sessionStorage.setItem('authorization', payload.data.token)
-    } catch (error) {
-      window.alert('Ocurrió un error al iniciar sesión')
-    }
+    this.setState({ authorization: payload.data.token })
   }
 
   async componentDidMount () {
     const token = window.sessionStorage.getItem('authorization')
-
-    if (token) {
-      const response = await window.fetch('http://localhost:8080/users/validate-session', {
-        headers: { authorization: token }
-      })
-
-      const payload = await response.json()
-
-      this.setState({ authorization: payload.data.token })
-
-      window.sessionStorage.setItem('authorization', payload.data.token)
-    }
+    const payload = await api.validateSession(token)
+    this.setState({ authorization: payload.data.token })
   }
 
   render () {
+    /*
     if (!this.state.authorization) {
       return (
-        <div className='app login'>
+        <div className='app login' id='loginScreen'>
           <LoginForm onSubmit={this.onLogin.bind(this)} />
         </div>
       )
     }
+    */
 
     return (
-      <div className='app'>
-        <Navbar />
-        <div className='container'>
-          <Post />
-          <Home />
+      <BrowserRouter>
+        <div className='app'>
+          <Navbar />
+          <ValidateSession />
+          <div className='container' id='content'>
+            <Switch>
+              <Route
+                path='/'
+                component={Home}
+                exact
+              />
+              <Route
+                path='/post'
+                component={Post}
+                exact
+              />
+              <Route
+                path='/login'
+                component={Login}
+                exact
+              />
+            </Switch>
+          </div>
         </div>
-      </div>
+      </BrowserRouter>
     )
   }
 }

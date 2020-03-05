@@ -4,7 +4,7 @@ import NavbarNavItem from './NavbarNavItem'
 
 function NavbarNav () {
   return (
-    <ul className='navbar-nav mr-auto'>
+    <ul className='navbar-nav ml-auto'>
       <NavbarNavItem
         text='Home'
         to='/home'
@@ -12,8 +12,13 @@ function NavbarNav () {
       />
 
       <NavbarNavItem
-        text='Sign In'
-        to='/sign-in'
+        text='New post'
+        to='/new-post'
+      />
+
+      <NavbarNavItem
+        text='About'
+        to='/about'
       />
     </ul>
   )

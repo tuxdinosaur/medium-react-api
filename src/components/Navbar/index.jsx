@@ -20,9 +20,11 @@ class Navbar extends Component {
   render () {
     return (
       <nav className='navbar navbar-expand-md navbar-dark bg-dark'>
-        <NavbarBrand />
-        <NavbarToggler onClick={this.toggleNavbar.bind(this)} />
-        <NavbarCollapse active={this.state.active} />
+        <div className="container">
+          <NavbarBrand />
+          <NavbarToggler onClick={this.toggleNavbar.bind(this)} />
+          <NavbarCollapse active={this.state.active} />
+        </div>
       </nav>
     )
   }

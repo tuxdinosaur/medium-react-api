@@ -52,9 +52,18 @@ class PostForm extends Component {
       <div className='row post-form'>
         <form
           onSubmit={this.onSubmit.bind(this)}
-          className='col-6'
+          className='col-12 col-md-6'
         >
-          <h1>Nuevo Post</h1>
+          <h1>Crear post</h1>
+
+          <AppInput
+            id='title'
+            label='Título'
+            type='text'
+            ariaDescribedBy='post title'
+            value={this.state.title}
+            onChange={this.onChange.bind(this)}
+          />
 
           <AppInput
             id='author'
@@ -65,18 +74,9 @@ class PostForm extends Component {
             onChange={this.onChange.bind(this)}
           />
 
-          <AppInput
-            id='title'
-            label='Titulo'
-            type='text'
-            ariaDescribedBy='post title'
-            value={this.state.title}
-            onChange={this.onChange.bind(this)}
-          />
-
           <AppTextArea
             id='description'
-            label='Texto'
+            label='Descripción'
             value={this.state.description}
             onChange={this.onChange.bind(this)}
           />
@@ -90,22 +90,30 @@ class PostForm extends Component {
             onChange={this.onChange.bind(this)}
           />
 
-          <AppButton
-            type='submit'
-            text='Guardar'
-            className='btn-primary'
-          />
+          <div className='d-flex justify-content-end'>
+            <AppButton
+              type='submit'
+              text='Publicar'
+              className='btn-primary'
+            />
+          </div>
         </form>
 
         {
           this.state.image ? (
+            <div className='col-12 col-md-6 d-flex align-items-center justify-content-center'>
             <img
               src={this.state.image}
-              alt='post preview'
-              className='col-6'
+              alt='Preview image URL'
+              className='w-100 d-flex justify-content-center'
             />
-          ) : 'Ingresa un valor de URL en el campo image'
+            </div>
+          ) :
+          <div className='col-12 col-md-6 d-flex justify-content-center align-items-center'>
+            Ingresa una URL en el campo de imagen
+          </div>
         }
+
       </div>
     )
   }

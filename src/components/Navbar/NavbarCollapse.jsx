@@ -13,7 +13,6 @@ function NavbarCollapse (props) {
   return (
     <div className={className}>
       <NavbarNav />
-      <NavbarNavSearch />
     </div>
   )
 }
