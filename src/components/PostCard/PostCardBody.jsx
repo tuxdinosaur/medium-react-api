@@ -1,8 +1,10 @@
 import React from 'react'
 
+import styles from './index.module.css'
+
 function PostCardBody (props) {
   return (
-    <div className='card-body'>
+    <div className={`card-body ${styles.cardBody}`}>
       <h5 className='card-title font-weight-bold m-0'>
         {props.title}
       </h5>

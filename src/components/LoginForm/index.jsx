@@ -1,7 +1,9 @@
 import React, { Component } from 'react'
 
-import AppInput from './AppInput'
-import AppButton from './AppButton'
+import AppInput from '../AppInput'
+import AppButton from '../AppButton'
+
+import styles from './index.module.css'
 
 class LoginForm extends Component {
   constructor (props) {
@@ -32,22 +34,27 @@ class LoginForm extends Component {
 
   render () {
     return (
-      <form onSubmit={this.onSubmit.bind(this)}>
-        <h1>Inicia Sesión</h1>
+      <form className={`${styles.formLogin}`} onSubmit={this.onSubmit.bind(this)}>
+        <h1 className={`${styles.titleLogin}`}>Welcome back</h1>
+        <p className={`${styles.emailText}`}>
+        Enter the email address associated <br/> with your
+        account
+        </p>
 
         <AppInput
           id='email'
-          label='Correo electrónico'
+          label='Your email'
           type='text'
           ariaDescribedBy='user email'
           placeholder='email@correo.com'
           value={this.state.email}
           onChange={this.onChange.bind(this)}
+          className={`${styles.styleInput}`}
         />
 
         <AppInput
           id='password'
-          label='Contraseña'
+          label='Your password'
           type='password'
           ariaDescribedBy='user password'
           placeholder='Contraseña'
@@ -57,8 +64,8 @@ class LoginForm extends Component {
 
         <AppButton
           type='submit'
-          text='Iniciar Sesión'
-          className='btn-primary btn-block'
+          text='Continue'
+          className={`btn-block ${styles.buttonDark}`}
         />
       </form>
     )

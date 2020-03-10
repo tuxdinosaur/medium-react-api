@@ -1,6 +1,6 @@
 import React from 'react'
 
-import AppButton from '../../components/AppButton'
+import AppButton from '../AppButton'
 
 function PostCardButtons (props) {
   return (

@@ -1,0 +1,13 @@
+.card {
+  flex-direction: row-reverse!important;
+}
+
+.cardImgTop {
+  width: 150px;
+  height: 150px;
+  object-fit: cover;
+}
+
+.cardBody {
+  padding: 1rem;
+}

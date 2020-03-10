@@ -58,6 +58,33 @@ async function validateSession(token) {
   }
 }
 
+async function getPost(id) {
+  try {
+    const token = window.sessionStorage.getItem('authorization')
+
+    const response = await window.fetch(`http://localhost:8080/posts/${id}`, {
+      headers: { authorization: token }
+    })
+
+    if(!response.ok) {
+      if (response.status >= 500) window.alert('El server está morido unu')
+      else window.alert('No se pudo obtener el post')
+
+      return { data: { token: '' } }
+    }
+
+    const payload = await response.json()
+
+    return payload
+
+  } catch (error) {
+    window.alert('No se pudo obtener el post')
+    return {
+      data: { post:[] }
+    }
+  }
+}
+
 async function getPosts() {
   try {
     const token = window.sessionStorage.getItem('authorization')
@@ -76,6 +103,7 @@ async function getPosts() {
     const payload = await response.json()
 
     payload.data.posts = payload.data.posts.map((badPost) => ({
+      id: badPost._id,
       image: badPost.image,
       title: badPost.title,
       text: badPost.description,
@@ -107,8 +135,7 @@ async function createPost(post) {
         author: post.author,
         imageUrl: post.image,
         readingTime: post.readTime,
-        description: post.description,
-        date: post.date
+        description: post.description
       })
     })
 
@@ -140,6 +167,7 @@ async function createPost(post) {
 export default {
   login,
   validateSession,
+  getPost,
   getPosts,
   createPost
 }

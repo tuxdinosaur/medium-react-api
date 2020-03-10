@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 
+import styles from './LoginForm/index.module.css'
+
 class AppInput extends Component {
   onChange (event) {
     if (this.props.onChange) this.props.onChange(event)
@@ -28,7 +30,7 @@ class AppInput extends Component {
           value={value}
           onChange={this.onChange.bind(this)}
           placeholder={placeholder}
-          className='form-control'
+          className={`form-control ${styles.styleInput}`}
         />
         {children}
       </div>

@@ -2,15 +2,17 @@ import React from 'react'
 
 import PostCard from '../components/PostCard'
 import PostCardButtons from '../components/PostCard/PostCardButtons'
+import { Link } from 'react-router-dom'
 
 function PostList (props) {
   return (
     <div className='row'>
       {
         props.list.map((post, index) => (
-          <div
+          <Link
             key={post.id || `post-${index}`}
-            className='col-md-4'
+            className='col-md-7'
+            to={`/post-detail/${post.id}`}
           >
             <PostCard
               title={post.title}
@@ -25,7 +27,7 @@ function PostList (props) {
                 view={post.view}
               />
             </PostCard>
-          </div>
+          </Link>
         ))
       }
     </div>

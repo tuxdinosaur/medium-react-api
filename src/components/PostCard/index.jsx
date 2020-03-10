@@ -3,9 +3,11 @@ import React from 'react'
 import PostCardBackground from './PostCardBackground'
 import PostCardBody from './PostCardBody'
 
+import styles from './index.module.css'
+
 function PostCard (props) {
   return (
-    <div className='card mb-4 shadow-sm'>
+    <div className={`card mb-4 shadow-sm ${styles.card}`}>
       <PostCardBackground
         img={props.img}
       />

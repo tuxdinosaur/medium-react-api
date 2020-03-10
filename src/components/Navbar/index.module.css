@@ -1,0 +1,12 @@
+.newPost {
+  border: 1px solid #029e74;
+  background: #029e74;
+  border-radius: 5px;
+}
+
+.logoutColor {
+  color: #b32e2e;
+  border: 1px solid #b32e2e;
+  background: #b32e2e;
+  border-radius: 5px;
+}

@@ -1,0 +1,32 @@
+.formLogin {
+  border: 1px solid #c4c4c4;
+  border-radius: 15px;
+  padding: 50px 150px;
+  color: #363636;
+  background: white;
+}
+
+.titleLogin {
+  text-align: center;
+}
+
+.emailText {
+  padding: 10px;
+  text-align: center;
+}
+
+.styleInput {
+  border: none;
+  border-bottom: 1px solid #b8b8b8;
+  border-radius: 0;
+}
+
+.buttonDark {
+  background: #444444;
+  color: #fff;
+}
+
+.buttonDark:hover {
+  background: #000000;
+  color: #fff;
+}
