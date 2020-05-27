@@ -1,7 +1,6 @@
 import React from 'react'
 
 import NavbarNav from './NavbarNav'
-import NavbarNavSearch from './NavbarNavSearcher'
 
 function NavbarCollapse (props) {
   const styles = ['collapse', 'navbar-collapse']
